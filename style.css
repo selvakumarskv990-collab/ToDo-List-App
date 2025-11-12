@@ -9,6 +9,8 @@ body{
     height: 100vh;
     background: linear-gradient(130deg,#ff7e5f, #feb47b);
     padding: 10px;
+
+
 }
 .todolist{
     width: 100%;
@@ -110,3 +112,168 @@ ul li span:hover{
     background-color:lightpink;
     border-radius: 50px;
 }
+@media (min-width: 420px) {
+  body {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 1024px) {
+  body {
+    font-size: 20px;
+  }
+}
+/* make sizes use more consistent units */
+:root{
+  --max-width: 650px;
+  --gutter: 16px;
+  --radius: 12px;
+  --pad-desktop: 30px 50px 70px;
+  --pad-mobile: 18px 18px 36px;
+}
+
+/* container adjustments */
+.container{
+  padding: var(--gutter);
+}
+
+/* limit todolist width and use responsive padding */
+.todolist{
+  max-width: var(--max-width);
+  margin: 80px auto 20px;
+  padding: var(--pad-desktop);
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+/* make the input row more flexible on small widths */
+.row{
+  padding: 10px;
+  gap: 10px;
+}
+
+/* let the button shrink on small screens */
+button{
+  min-width: 90px;
+  width: auto;
+  padding: 10px 14px;
+  font-size: 1rem;
+}
+
+/* list items: reduce padding on small screens */
+ul li{
+  padding: 12px 10px 12px 48px;
+  font-size: 1rem;
+}
+
+/* smaller icons in heading */
+.todolist h2 img{
+  width: 30px;
+  margin-right: 8px;
+}
+
+/* --- Media queries --- */
+
+/* Large tablets & small desktops (<= 1024px) */
+@media (max-width: 1024px) {
+  .todolist{
+    padding: 26px 40px 56px;
+    margin: 60px auto 18px;
+  }
+
+  ul li{
+    font-size: 1.05rem;
+  }
+}
+
+/* Tablets & large phones (<= 768px) */
+@media (max-width: 768px) {
+  :root { --max-width: 540px; }
+
+  .todolist{
+    padding: 22px 28px 44px;
+    margin: 60px 12px;
+    border-radius: 16px;
+  }
+
+  .row{
+    padding: 10px;
+  }
+
+  input{
+    font-size: 0.98rem;
+  }
+
+  button{
+    padding: 10px 12px;
+    min-width: 80px;
+    font-size: 0.95rem;
+  }
+
+  ul li{
+    padding-left: 46px;
+    font-size: 1rem;
+  }
+}
+
+/* Phones in portrait (<= 480px) — stack controls vertically */
+@media (max-width: 480px) {
+  :root { --max-width: 420px; --gutter: 12px; }
+
+  .todolist{
+    margin: 40px 10px;
+    padding: var(--pad-mobile);
+    border-radius: 14px;
+  }
+
+  /* stack the input and button vertically for small screens */
+  .row{
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  input{
+    padding: 12px;
+    font-size: 1rem;
+  }
+
+  button{
+    width: 100%;
+    border-radius: 12px;
+    padding: 12px;
+    font-size: 1rem;
+  }
+
+  ul li{
+    padding: 12px 12px 12px 46px;
+    font-size: 1rem;
+  }
+
+  ul li::before{
+    height: 24px;
+    width: 24px;
+    left: 8px;
+  }
+
+  ul li span{
+    width: 28px;
+    height: 28px;
+    font-size: 18px;
+    right: 8px;
+  }
+}
+
+/* optional: fluid typography using clamp */
+h2{
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+}
+
+/* small accessibility tweak: increase hit area for list item remove button */
+ul li span{
+  padding: 4px;
+  border-radius: 50%;
+}
+
